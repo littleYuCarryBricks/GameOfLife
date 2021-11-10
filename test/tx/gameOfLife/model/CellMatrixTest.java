@@ -11,7 +11,7 @@ import tx.gameOfLife.util.Utils;
 public class CellMatrixTest {
 
     CellMatrix cellMatrix = null;
-    String path = "D:\\学习\\wx_devlop\\TXGameOfLife\\test.case";
+    String path = "D:\\JavaStudyText\\bibiJavaStudy\\TXGameOfLife\\test.txt";
 
     @Before
     public void init() {
@@ -26,6 +26,7 @@ public class CellMatrixTest {
                 {0, 1, 0},
                 {1, 1, 1}
         };
+        Assert.assertEquals(1, cellMatrix.getMatrix()[1][1]);
         Assert.assertArrayEquals(expected, cellMatrix.getMatrix());
         cellMatrix.transform();
         expected = new int[][]{
@@ -41,6 +42,7 @@ public class CellMatrixTest {
                 {0, 1, 0}
         };
         Assert.assertArrayEquals(expected, cellMatrix.getMatrix());
+        Assert.assertEquals(0, cellMatrix.getMatrix()[1][1]);
     }
 
 

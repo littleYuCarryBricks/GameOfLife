@@ -6,7 +6,7 @@ import java.io.*;
 
 /**
  * 工具方法类
- * Created by mjh on 2017/6/3.
+ *
  */
 public class Utils {
 
@@ -32,6 +32,9 @@ public class Utils {
                 array = line.split(" ");
                 for (int j = 0; j < array.length; j++) {
                     matrix[i][j] = Integer.parseInt(array[j]);
+/*                    if (Integer.parseInt(array[j]) == 1)
+                    matrix[i][j] = true;
+                    else  matrix[i][j] = false;*/
                 }
             }
 

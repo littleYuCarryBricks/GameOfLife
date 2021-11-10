@@ -8,7 +8,7 @@ import java.util.Random;
 
 /**
  * 随机生成case
- * Created by mjh on 2017/6/3.
+ *
  */
 public class InitCase {
 

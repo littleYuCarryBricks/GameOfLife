@@ -3,7 +3,7 @@ package tx.gameOfLife.model;
 import java.util.Arrays;
 
 /**
- * Created by mjh on 2017/6/3.
+ *
  */
 public class CellMatrix {
     /**
@@ -39,6 +39,10 @@ public class CellMatrix {
         this.matrix = matrix;
     }
 
+    public CellMatrix() {
+
+    }
+
     /**
      * 上一个状态到下一个状态的转移
      * 根据规则可以总结得出两条规则:
@@ -49,6 +53,7 @@ public class CellMatrix {
         int[][] nextMatrix=new int[height][width];
         for (int y = 0; y < matrix.length; y++) {
             for (int x = 0; x < matrix[0].length; x++) {
+            //优化2
                 nextMatrix[y][x]=0;
                 int nearNum= findLifedNum(y,x);
                 //等于3，则下一状态总是活
@@ -59,6 +64,8 @@ public class CellMatrix {
                 else if(nearNum==2){
                     nextMatrix[y][x]=matrix[y][x];
                 }
+                //原代码2：
+//                else nextMatrix[y][x]=false;
             }
         }
         matrix=nextMatrix;
@@ -77,34 +84,42 @@ public class CellMatrix {
         //左边
         if(x!=0){
             num+=matrix[y][x-1];
+//            num+=(matrix[y][x-1])?1:0;
         }
         //左上角
         if(x!=0&&y!=0){
             num+=matrix[y-1][x-1];
+//            num+=matrix[y-1][x-1]?1:0;
         }
         //上边
         if(y!=0){
             num+=matrix[y-1][x];
+//            num+=matrix[y-1][x]?1:0;
         }
         //右上
         if(x!=width-1&&y!=0){
             num+=matrix[y-1][x+1];
+//            num+=matrix[y-1][x+1]?1:0;
         }
         //右边
         if(x!=width-1){
             num+=matrix[y][x+1];
+//            num+=matrix[y][x+1]?1:0;
         }
         //右下
         if(x!=width-1&&y!=height-1){
             num+=matrix[y+1][x+1];
+//            num+=matrix[y+1][x+1]?1:0;
         }
         //下边
         if(y!=height-1){
             num+=matrix[y+1][x];
+//            num+=matrix[y+1][x]?1:0;
         }
         //左下
         if(x!=0&&y!=height-1){
             num+=matrix[y+1][x-1];
+//            num+=matrix[y+1][x-1]?1:0;
         }
         return num;
     }
